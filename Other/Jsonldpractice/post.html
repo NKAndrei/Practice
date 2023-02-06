@@ -1,0 +1,20 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+function trimite()
+{
+interogare="prefix : <http://buchmann.ro#> INSERT DATA {GRAPH :moviesInfo {:Mama :are :Mere}}";
+$.post("http://localhost:8080/rdf4j-server/repositories/1/statements",{update:interogare},procesareRaspuns)
+}
+function procesareRaspuns()
+{
+$("#RezervatAfisare").append("inserare cu succes")
+}
+</script>
+</head>
+<body>
+<input type=button value="apasa-ma" onclick="trimite()"/>
+<div id="RezervatAfisare" style="border:1px solid red; height: 300px; width:400px"></div>
+</body>
+</html>
