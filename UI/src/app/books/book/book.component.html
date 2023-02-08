@@ -1,0 +1,44 @@
+<p>book works!</p>
+
+
+
+<div class="crudarea">
+  <p>Book list</p>
+  <li *ngFor="let singlebook of books">
+    Book Title: {{singlebook.Title}}
+    {{singlebook | json}}
+  </li>
+</div>
+
+
+<div class="crudarea">
+  <div class="crudoperations">
+    <p>Create new book</p>
+    <label for="title">Book title: </label>
+    <input id="title" required minlength="3" [(ngModel)]="newBook.Title" #booktitle="ngModel">
+    <ng-template *ngIf="booktitle.invalid && (booktitle.dirty || booktitle.touched); else addTheBook" class="alert">
+      name is not valid
+    </ng-template>
+    <ng-template #addTheBook>
+      good enough
+    </ng-template>
+    <div>
+      <button (click)="addBook()" [disabled]="booktitle.invalid">Add new book</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="crudarea">
+  <p>Book by ID</p>
+  <input type="number" id="Id" #bookId/>
+  <button (click)="getBookById(bookId.value)">Get book</button>
+  <p>Modify current book</p>
+  <div class="crudoperations" *ngIf="book">
+    <input id="title" required minlength="3" [(ngModel)]="book.Title" #newBookTitle="ngModel">
+    <div>
+      <button (click)="modifyBook()" [disabled]="newBookTitle.invalid">Modify book</button>
+    </div>
+    {{modifiedBook.Title}}
+  </div>
+</div>

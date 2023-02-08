@@ -1,0 +1,11 @@
+<p>author works!</p>
+<div>
+  <p>Author by ID</p>
+  {{author | json}}
+</div>
+<div>
+  <p>Author list</p>
+  <li *ngFor="let singleauthor of authors">
+    {{singleauthor | json}}
+  </li>
+</div>
